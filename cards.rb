@@ -51,3 +51,5 @@ while opcao != 4
   opcao = menu()
 end
 
+puts 'Obrigado por usar o Cards System!'
+
