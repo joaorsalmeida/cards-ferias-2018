@@ -1,3 +1,4 @@
+require_relative 'card'
 
 def menu()
   puts "Digite a opção desejada"
@@ -16,7 +17,8 @@ def inserir_card()
   puts 'Insira uma expressão em Ingles:'
   ingles = gets.chomp
 
-  card = { portugues: portugues, ingles: ingles } # hash
+  card = Card.new
+  #card = { portugues: portugues, ingles: ingles } # hash
   puts "Você inseriu o card: #{imprimir_card(card)}"
   puts
   return card # o 'return' é opcional!
