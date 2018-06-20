@@ -11,15 +11,27 @@ def menu()
   gets.to_i
 end
 
-def inserir_card()
+def inserir_card(cards)
   puts 'Insira uma expressão em Português:'
   portugues = gets.chomp
   puts 'Insira uma expressão em Ingles:'
   ingles = gets.chomp
+  card = Card.new(portugues, ingles)
 
-  card = Card.new
-  #card = { portugues: portugues, ingles: ingles } # hash
-  puts "Você inseriu o card: #{imprimir_card(card)}"
+  card_existe = false
+
+  # Bonus/Desafio: estudar e usar o método select
+  cards.each do |c|
+    if c == card
+      puts 'Esse card já existe!'
+      card_existe = true
+    end
+  end
+
+  if card_existe == false
+    cards << card
+    puts "Você inseriu o card: #{card}"
+  end
   puts
   return card # o 'return' é opcional!
 end
@@ -28,14 +40,11 @@ def imprimir_cards(cartoes)
   puts "Cards Cadastrados:"
   puts
   cartoes.each do |cartao|
-    puts imprimir_card(cartao)
+    cartao.imprimir()
   end
   puts
 end
 
-def imprimir_card(cartao)
-  "Card: #{cartao[:portugues]} => #{cartao[:ingles]}"
-end
 
 
 cards = []
@@ -44,8 +53,9 @@ opcao = menu()
 
 while opcao != 4
   if opcao == 1
-    c = inserir_card()
-    cards << c
+
+    c = inserir_card(cards)
+
   elsif opcao == 2
 
     imprimir_cards(cards)

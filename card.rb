@@ -1,33 +1,27 @@
 class Card
-  attr_reader :ingles
-  attr_writer :ingles
+  attr_accessor :portugues
+  attr_accessor :ingles
+  attr_accessor :imagem
   # quando tiver reader E writer, pode usar attr_accessor
 
   def initialize(port, ing = "")
     @portugues = port
     @ingles = ing
-  end
-
-  # podemos trocar por um attr_writer
-  def portugues=(valor)
-    @portugues = valor
-  end
-
-  #podemos trocar por um attr_reader
-  def portugues()
-    return @portugues
+    @imagem = "nenhuma"
   end
 
   def imprimir()
-    "Card: #{@portugues} => #{@ingles}"
+    puts "Card: " + to_s()
   end
 
-  def to_s
-    imprimir()
+  # em Ruby usamos o snake_case para métodos
+  def to_s()
+    "#{portugues()} => #{ingles()}"
   end
 
   def ==(outro_card)
-
+    portugues() == outro_card.portugues() &&
+    ingles() == outro_card.ingles()
   end
 
   def include?(texto)
