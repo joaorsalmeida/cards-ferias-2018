@@ -1,7 +1,7 @@
 require_relative 'card'
+
 class EmergencialCard < Card
-  attr_accessor :emergency_message
-  attr_accessor :emergency_phone
+  attr_reader :emergency_message, :emergency_phone
 
   def initialize(p, i = "")
     super(p, i)

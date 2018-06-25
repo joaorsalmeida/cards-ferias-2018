@@ -1,8 +1,5 @@
 class Card
-  attr_accessor :portugues
-  attr_accessor :ingles
-  attr_accessor :imagem
-  # quando tiver reader E writer, pode usar attr_accessor
+  attr_accessor :portugues, :ingles, :imagem
 
   def initialize(port, ing = "")
     @portugues = port
